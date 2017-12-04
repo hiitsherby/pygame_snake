@@ -43,8 +43,12 @@ def gameOver():
     playSurface.blit(GOsurf,GOrect)
     showScore(0)
     pygame.display.flip()
-   
-    time.sleep(4)
+    pygame.time.set_timer(pygame.USEREVENT, 4000)
+    should_quit = False
+    while not should_quit:
+        for event in pygame.event.get():
+            if event.type == pygame.USEREVENT:
+                should_quit = True
     pygame.quit() #pygame exit
     sys.exit() #console exit
 
@@ -136,7 +140,3 @@ while True:
 
 
 	# checkout pyinstaller
-
-
-
-
